@@ -1,0 +1,135 @@
+#!/bin/bash
+
+screen -S HL -X stuff 'AT+CEREG=0'$(echo -ne '\015')
+sleep .1
+#Check Module Settings
+screen -S HL -X stuff 'AT'$(echo -ne '\015')
+sleep .1
+screen -S HL -X stuff 'ATE1'$(echo -ne '\015')			#turn on echo
+sleep .1
+screen -S HL -X stuff 'AT+CMEE=1'$(echo -ne '\015')
+sleep .1
+screen -S HL -X stuff 'AT+KGSN=3'$(echo -ne '\015')
+sleep .1
+screen -S HL -X stuff 'AT+CGSN'$(echo -ne '\015')
+sleep .1
+screen -S HL -X stuff 'ATI3'$(echo -ne '\015')
+sleep .1
+screen -S HL -X stuff 'AT+CGMR'$(echo -ne '\015')
+sleep .1
+screen -S HL -X stuff 'AT+IPR?'$(echo -ne '\015')
+sleep .1
+
+#Check SIM is Ready
+screen -S HL -X stuff 'AT+CPIN?'$(echo -ne '\015')
+sleep .1
+
+#Check Network Coverage
+screen -S HL -X stuff 'AT+CREG?'$(echo -ne '\015')		#1,5 means registered roaming
+sleep .1
+screen -S HL -X stuff 'AT+CEREG?'$(echo -ne '\015')		#0,5 means registered roaming
+sleep .1
+screen -S HL -X stuff 'AT&K3'$(echo -ne '\015')			#flow control
+sleep .1
+screen -S HL -X stuff 'AT+KPATTERN="--EOF--Pattern--"'$(echo -ne '\015')	#may be unecessary
+sleep .1
+
+#Delete Old Root/Local Certificates
+screen -S HL -X stuff 'AT+KCERTDELETE=0,0'$(echo -ne '\015')
+sleep .1
+screen -S HL -X stuff 'AT+KCERTDELETE=1,0'$(echo -ne '\015')
+sleep .1
+screen -S HL -X stuff 'AT+KCERTDELETE=1,1'$(echo -ne '\015')
+sleep .1
+screen -S HL -X stuff 'AT+KCERTDELETE=1,2'$(echo -ne '\015')
+sleep .1
+
+#Delete Old Private Keys
+screen -S HL -X stuff 'AT+KPRIVKDELETE=0'$(echo -ne '\015')
+sleep .1
+screen -S HL -X stuff 'AT+KPRIVKDELETE=1'$(echo -ne '\015')
+sleep .1
+screen -S HL -X stuff 'AT+KPRIVKDELETE=2'$(echo -ne '\015')
+sleep .1
+
+#Initalize TLS 1.2
+screen -S HL -X stuff 'AT+KSSLCFG=0,3'$(echo -ne '\015')		#set to TLS1.2
+sleep .1
+screen -S HL -X stuff 'AT+KSSLCFG?'$(echo -ne '\015')			#0,3 and 2,0 means ready 
+sleep .1
+
+#Store CA Certificate to Root
+screen -S HL -X stuff 'AT+KCERTSTORE=0'$(echo -ne '\015')
+sleep 2
+screen -S HL -X stuff '-----BEGIN CERTIFICATE-----'$(echo -ne '\015')
+sleep .1
+screen -S HL -X stuff 'MIIDSjCCAjKgAwIBAgIQRK+wgNajJ7qJMDmGLvhAazANBgkqhkiG9w0BAQUFADA/'$(echo -ne '\015')
+sleep .1
+screen -S HL -X stuff 'MSQwIgYDVQQKExtEaWdpdGFsIFNpZ25hdHVyZSBUcnVzdCBDby4xFzAVBgNVBAMT'$(echo -ne '\015')
+sleep .1
+screen -S HL -X stuff 'DkRTVCBSb290IENBIFgzMB4XDTAwMDkzMDIxMTIxOVoXDTIxMDkzMDE0MDExNVow'$(echo -ne '\015')
+sleep .1
+screen -S HL -X stuff 'PzEkMCIGA1UEChMbRGlnaXRhbCBTaWduYXR1cmUgVHJ1c3QgQ28uMRcwFQYDVQQD'$(echo -ne '\015')
+sleep .1
+screen -S HL -X stuff 'Ew5EU1QgUm9vdCBDQSBYMzCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEB'$(echo -ne '\015')
+sleep .1
+screen -S HL -X stuff 'AN+v6ZdQCINXtMxiZfaQguzH0yxrMMpb7NnDfcdAwRgUi+DoM3ZJKuM/IUmTrE4O'$(echo -ne '\015')
+sleep .1
+screen -S HL -X stuff 'rz5Iy2Xu/NMhD2XSKtkyj4zl93ewEnu1lcCJo6m67XMuegwGMoOifooUMM0RoOEq'$(echo -ne '\015')
+sleep .1
+screen -S HL -X stuff 'OLl5CjH9UL2AZd+3UWODyOKIYepLYYHsUmu5ouJLGiifSKOeDNoJjj4XLh7dIN9b'$(echo -ne '\015')
+sleep .1
+screen -S HL -X stuff 'xiqKqy69cK3FCxolkHRyxXtqqzTWMIn/5WgTe1QLyNau7Fqckh49ZLOMxt+/yUFw'$(echo -ne '\015')
+sleep .1
+screen -S HL -X stuff '7BZy1SbsOFU5Q9D8/RhcQPGX69Wam40dutolucbY38EVAjqr2m7xPi71XAicPNaD'$(echo -ne '\015')
+sleep .1
+screen -S HL -X stuff 'aeQQmxkqtilX4+U9m5/wAl0CAwEAAaNCMEAwDwYDVR0TAQH/BAUwAwEB/zAOBgNV'$(echo -ne '\015')
+sleep .1
+screen -S HL -X stuff 'HQ8BAf8EBAMCAQYwHQYDVR0OBBYEFMSnsaR7LHH62+FLkHX/xBVghYkQMA0GCSqG'$(echo -ne '\015')
+sleep .1
+screen -S HL -X stuff 'SIb3DQEBBQUAA4IBAQCjGiybFwBcqR7uKGY3Or+Dxz9LwwmglSBd49lZRNI+DT69'$(echo -ne '\015')
+sleep .1
+screen -S HL -X stuff 'ikugdB/OEIKcdBodfpga3csTS7MgROSR6cz8faXbauX+5v3gTt23ADq1cEmv8uXr'$(echo -ne '\015')
+sleep .1
+screen -S HL -X stuff 'AvHRAosZy5Q6XkjEGB5YGV8eAlrwDPGxrancWYaLbumR9YbK+rlmM6pZW87ipxZz'$(echo -ne '\015')
+sleep .1
+screen -S HL -X stuff 'R8srzJmwN0jP41ZL9c8PDHIyh8bwRLtTcm1D9SZImlJnt1ir/md2cXjbDaJWFBM5'$(echo -ne '\015')
+sleep .1
+screen -S HL -X stuff 'JDGFoqgCWjBH4d1QB7wCCZAA62RjYJsWvIjJEubSfZGL+T0yjWW06XyxV3bqxbYo'$(echo -ne '\015')
+sleep .1
+screen -S HL -X stuff 'Ob8VZRzI9neWagqNdwvYkQsEjgfbKbYK7p2CNTUQ'$(echo -ne '\015')
+sleep .1
+screen -S HL -X stuff '-----END CERTIFICATE-----'$(echo -ne '\015')
+sleep 2
+
+screen -S HL -X stuff '--EOF--Pattern--'$(echo -ne '\015')
+sleep 2
+
+screen -S HL -X stuff 'AT+KCERTSTORE?'$(echo -ne '\015')
+sleep .1
+
+#Setup Module Clock
+screen -S HL -X stuff 'AT+CCLK="19/11/16,14:52:43-24"'$(echo -ne '\015')
+sleep .1
+
+#Setup Module GPRS
+screen -S HL -X stuff 'AT+KCNXCFG=1,"GPRS","internet.sierrawireless.com"'$(echo -ne '\015')
+sleep .1
+
+Setup SSL Configuration
+screen -S HL -X stuff 'AT+KSSLCRYPTO=0,9,3,25456,12,4,0'$(echo -ne '\015')
+sleep 1
+
+screen -S HL -X stuff 'AT+KCNXUP=1'$(echo -ne '\015')
+sleep 10
+
+#Setup HTTPS Configuration
+screen -S HL -X stuff 'AT+KHTTPCFG=1,"www.howsmyssl.com",443,2,,,,,0'$(echo -ne '\015')
+sleep 10
+
+#Run HTTP Get Data from HTTPS Server
+screen -S HL -X stuff 'AT+KHTTPGET=1,"/"'$(echo -ne '\015')
+sleep 1
+
+#screen -S HL -X stuff 'AT+KHTTPDEL=1'$(echo -ne '\015')
+#sleep .1

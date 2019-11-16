@@ -1,0 +1,161 @@
+#!/bin/bash
+
+#Initalize TLS 1.2
+screen -S HL -X stuff 'AT+KSSLCFG=0,3'$(echo -ne '\015')		#set to TLS1.2
+sleep .1
+screen -S HL -X stuff 'AT+KSSLCFG?'$(echo -ne '\015')			#0,3 and 2,0 means ready 
+sleep .1
+
+#Store CA Certificate to Root
+screen -S HL -X stuff 'AT+KCERTSTORE=0'$(echo -ne '\015')
+sleep .1
+screen -S HL -X stuff '-----BEGIN CERTIFICATE-----'$(echo -ne '\015')
+sleep .1
+screen -S HL -X stuff 'MIIDjTCCAnWgAwIBAgIUUIzKk2ddw9FmvpDLFiKfCy4YJR8wDQYJKoZIhvcNAQEL'$(echo -ne '\015')
+sleep .1
+screen -S HL -X stuff 'BQAwVjELMAkGA1UEBhMCQVUxEzARBgNVBAgMClNvbWUtU3RhdGUxITAfBgNVBAoM'$(echo -ne '\015')
+sleep .1
+screen -S HL -X stuff 'GEludGVybmV0IFdpZGdpdHMgUHR5IEx0ZDEPMA0GA1UEAwwGQ0FfUlNBMB4XDTE5'$(echo -ne '\015')
+sleep .1
+screen -S HL -X stuff 'MDYxMDAzMjgyM1oXDTI5MDYwNzAzMjgyM1owVjELMAkGA1UEBhMCQVUxEzARBgNV'$(echo -ne '\015')
+sleep .1
+screen -S HL -X stuff 'BAgMClNvbWUtU3RhdGUxITAfBgNVBAoMGEludGVybmV0IFdpZGdpdHMgUHR5IEx0'$(echo -ne '\015')
+sleep .1
+screen -S HL -X stuff 'ZDEPMA0GA1UEAwwGQ0FfUlNBMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKC'$(echo -ne '\015')
+sleep .1
+screen -S HL -X stuff 'AQEAs/ors23CYllyZI/XgB8+f8vYjl0b84K3SFTkE7aWuZ3oILTbe83HVFvqNMdj'$(echo -ne '\015')
+sleep .1
+screen -S HL -X stuff 'vDPjyNV+uUqcaxfePgFHyjJ1FOFsnlJhtTLMV4gZrA3bSLw0l4kSnWKKO8eFumOw'$(echo -ne '\015')
+sleep .1
+screen -S HL -X stuff '5aha9YZ3qnP2juckd/ndeY4dlnl025bk3XBrXMNNpQiExuyyX1lkUgjtL42pumUG'$(echo -ne '\015')
+sleep .1
+screen -S HL -X stuff 'TqnD1b1Wl7MPlwUy91n2A42wZCpAmPA4NODRbt5p2cjaVzEXuhkdGTlaNuNFmuGd'$(echo -ne '\015')
+sleep .1
+screen -S HL -X stuff 'jLnk+2cm0Uu/NB33QSEtYyaUJUI3yL/jX4ElgjB3EwZj4w62meqWOR2mJvbyyIsU'$(echo -ne '\015')
+sleep .1
+screen -S HL -X stuff 'n/MBME8c+hMOVnSI5yvmAIEoTQIDAQABo1MwUTAdBgNVHQ4EFgQUx38GeePGw+1r'$(echo -ne '\015')
+sleep .1
+screen -S HL -X stuff '19vlVB/E3gPLvuwwHwYDVR0jBBgwFoAUx38GeePGw+1r19vlVB/E3gPLvuwwDwYD'$(echo -ne '\015')
+sleep .1
+screen -S HL -X stuff 'VR0TAQH/BAUwAwEB/zANBgkqhkiG9w0BAQsFAAOCAQEAb7d2YwTonCpHgKi2EIzA'$(echo -ne '\015')
+sleep .1
+screen -S HL -X stuff 'vMsTn5KTxxH/KB8tplPiI8PjXGsXMlHgwLL/pXOMeAVveQ+4rQ8vW0LXzs7gsacs'$(echo -ne '\015')
+sleep .1
+screen -S HL -X stuff 'XoLdl90/Vc34y0ng302A+zLRnPhCeRmMiQT5alyMMJCJF79H8NpI+/ccNQwvWSRQ'$(echo -ne '\015')
+sleep .1
+screen -S HL -X stuff 'x7uabkvS3GvytjwR7rxjWRoiT54KDeNzNHv7OO2jDX/Jovt07fHIg8MR+Xi6uY0V'$(echo -ne '\015')
+sleep .1
+screen -S HL -X stuff 'uTE8bZBqb7slVuF6TYX4My9jnpKx1izWCSgyEee2vcghuymUaCzsb+JL5ixGBxt/'$(echo -ne '\015')
+sleep .1
+screen -S HL -X stuff 'wpec2tMs62/7dEb7A5/La+mKoWrmSqhCM74PmwvKhfXglR1/bU0Z2VMsS7x9GKXm'$(echo -ne '\015')
+sleep .1
+screen -S HL -X stuff 'KA=='$(echo -ne '\015')
+sleep .1
+screen -S HL -X stuff '-----END CERTIFICATE-----'$(echo -ne '\015')
+sleep 2
+
+screen -S HL -X stuff '--EOF--Pattern--'$(echo -ne '\015')
+sleep 2
+
+#Store Client Certificate to Local
+screen -S HL -X stuff 'AT+KCERTSTORE=1,,0'$(echo -ne '\015')
+sleep .1
+screen -S HL -X stuff '-----BEGIN CERTIFICATE-----'$(echo -ne '\015')
+sleep .1
+screen -S HL -X stuff 'MIICaDCCAVACFFxzMVBrdWSCp9gNYqfrMkUxbrkAMA0GCSqGSIb3DQEBCwUAMFYx'$(echo -ne '\015')
+sleep .1
+screen -S HL -X stuff 'CzAJBgNVBAYTAkFVMRMwEQYDVQQIDApTb21lLVN0YXRlMSEwHwYDVQQKDBhJbnRl'$(echo -ne '\015')
+sleep .1
+screen -S HL -X stuff 'cm5ldCBXaWRnaXRzIFB0eSBMdGQxDzANBgNVBAMMBkNBX1JTQTAeFw0xOTA2MTAw'$(echo -ne '\015')
+sleep .1
+screen -S HL -X stuff 'MzMxNDdaFw0yOTAzMDkwMzMxNDdaMFYxCzAJBgNVBAYTAkFVMRMwEQYDVQQIDApT'$(echo -ne '\015')
+sleep .1
+screen -S HL -X stuff 'b21lLVN0YXRlMSEwHwYDVQQKDBhJbnRlcm5ldCBXaWRnaXRzIFB0eSBMdGQxDzAN'$(echo -ne '\015')
+sleep .1
+screen -S HL -X stuff 'BgNVBAMMBkhMNzgwMDBZMBMGByqGSM49AgEGCCqGSM49AwEHA0IABLc34dO0Oq70'$(echo -ne '\015')
+sleep .1
+screen -S HL -X stuff 'Un2g8a6WbQlM7mB/l3tEKNAfzl8hXek3Bpu6GCUqRHTbxqtJMS7L9eWfLbuV1PLg'$(echo -ne '\015')
+sleep .1
+screen -S HL -X stuff 'ljHakNDPXPgwDQYJKoZIhvcNAQELBQADggEBAFouD+IAA3AgNiYFYE/NfhNNCk6C'$(echo -ne '\015')
+sleep .1
+screen -S HL -X stuff 'N1x+xnxyQwQBeEY9r4W4ins8P0Re53dzgzxM3DserrGQ5HZMGXz29Bf/Qc8XRj+x'$(echo -ne '\015')
+sleep .1
+screen -S HL -X stuff 'bVgTzrxpuy/v9o59pAR67IL5lAr18sLGXiCXefpTSRAdkhIh+3LI6m+05p2TkDy5'$(echo -ne '\015')
+sleep .1
+screen -S HL -X stuff '/G8EmyXVguvmpKpyTws5ZhHuZn4Lyx1m5YAnazHRAUEymnf5ylUMhQfVDjwryBMw'$(echo -ne '\015')
+sleep .1
+screen -S HL -X stuff 'eWIECE007znE55cDgB516+SwCGOMnHU05e8z0ogcwOWw5lObvcwOOMP+664VB8mY'$(echo -ne '\015')
+sleep .1
+screen -S HL -X stuff 'cBmwbeqfu9ZRpEVeYqEPHhj9sZmPl3UzZQ0sAxf9ARHiEDisBKgsW5wwDhM='$(echo -ne '\015')
+sleep .1
+screen -S HL -X stuff '-----END CERTIFICATE-----'$(echo -ne '\015')
+sleep 2
+
+screen -S HL -X stuff '--EOF--Pattern--'$(echo -ne '\015')
+sleep 2
+
+screen -S HL -X stuff 'AT+KCERTSTORE?'$(echo -ne '\015')
+sleep .1
+
+#Store Client Private Key
+screen -S HL -X stuff 'AT+KPRIVKSTORE=0'$(echo -ne '\015')
+sleep .1
+screen -S HL -X stuff '-----BEGIN EC PRIVATE KEY-----'$(echo -ne '\015')
+sleep .1
+screen -S HL -X stuff 'MHcCAQEEIMpyNfLXF2x0yOi/AgRtFfjsJEeI6UUXLJ273lEgGv1loAoGCCqGSM49'$(echo -ne '\015')
+sleep .1
+screen -S HL -X stuff 'AwEHoUQDQgAEtzfh07Q6rvRSfaDxrpZtCUzuYH+Xe0Qo0B/OXyFd6TcGm7oYJSpE'$(echo -ne '\015')
+sleep .1
+screen -S HL -X stuff 'dNvGq0kxLsv15Z8tu5XU8uCWMdqQ0M9c+A=='$(echo -ne '\015')
+sleep .1
+screen -S HL -X stuff '-----END EC PRIVATE KEY-----'$(echo -ne '\015')
+sleep 2
+
+screen -S HL -X stuff '--EOF--Pattern--'$(echo -ne '\015')
+sleep 2
+
+screen -S HL -X stuff 'AT+KPRIVKSTORE?'$(echo -ne '\015')
+sleep 1
+
+#Setup Module Clock
+screen -S HL -X stuff 'AT+CCLK="19/11/16,14:52:43-24"'$(echo -ne '\015')
+sleep .1
+
+#Setup Module GPRS
+screen -S HL -X stuff 'AT+KCNXCFG=1,"GPRS","internet.sierrawireless.com"'$(echo -ne '\015')
+sleep .1
+screen -S HL -X stuff 'AT+KCNXPROFILE=1'$(echo -ne '\015')
+sleep 3
+
+#Setup SSL Configuration
+screen -S HL -X stuff 'AT+KSSLCRYPTO=0,9,3,25456,12,4,0'$(echo -ne '\015')
+sleep 1
+
+#Setup HTTP Configuration
+screen -S HL -X stuff 'AT+KHTTPCFG=1,"35.201.97.85",443,2,,,,,0'$(echo -ne '\015')
+sleep 10
+
+#Setup HTTP header Sample Field
+screen -S HL -X stuff 'AT+KHTTPHEADER=1'$(echo -ne '\015')
+sleep .1
+screen -S HL -X stuff 'Content-Length: 44'$(echo -ne '\015')
+sleep .1
+screen -S HL -X stuff '--EOF--Pattern--'$(echo -ne '\015')
+sleep .1
+
+#Run HTTP Post to Send Data to HTTPS Server
+screen -S HL -X stuff 'AT+KHTTPPOST=1,,"\post\"'$(echo -ne '\015')
+sleep 1
+screen -S HL -X stuff 'This line is the HTTP POST data test vector.'$(echo -ne '\015')
+sleep 10
+screen -S HL -X stuff 'AT'$(echo -ne '\015')
+sleep .1
+
+#Run HTTP Header Check
+screen -S HL -X stuff 'AT+KHTTPHEAD=1,"\"'$(echo -ne '\015')
+sleep 10
+screen -S HL -X stuff 'AT'$(echo -ne '\015')
+sleep .1
+
+screen -S HL -X stuff 'AT+KHTTPDEL=1'$(echo -ne '\015')
+sleep .1
