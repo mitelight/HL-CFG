@@ -1,0 +1,56 @@
+#!/bin/bash
+
+#Check Module Settings
+screen -S HL -X stuff 'AT'$(echo -ne '\015')
+sleep .1
+screen -S HL -X stuff 'ATE1'$(echo -ne '\015')			#turn on echo
+sleep .1
+screen -S HL -X stuff 'AT+CMEE=1'$(echo -ne '\015')
+sleep .1
+screen -S HL -X stuff 'AT+KGSN=3'$(echo -ne '\015')
+sleep .1
+screen -S HL -X stuff 'AT+CGSN'$(echo -ne '\015')
+sleep .1
+screen -S HL -X stuff 'ATI3'$(echo -ne '\015')
+sleep .1
+screen -S HL -X stuff 'AT+CGMR'$(echo -ne '\015')
+sleep .1
+screen -S HL -X stuff 'AT+IPR?'$(echo -ne '\015')
+sleep .1
+
+#Check SIM is Ready
+screen -S HL -X stuff 'AT+CPIN?'$(echo -ne '\015')
+sleep .1
+
+#Check Network Coverage
+screen -S HL -X stuff 'AT+CREG?'$(echo -ne '\015')		#1,5 means registered roaming
+sleep .1
+screen -S HL -X stuff 'AT+CEREG?'$(echo -ne '\015')		#0,5 means registered roaming
+sleep .1
+screen -S HL -X stuff 'AT&K3'$(echo -ne '\015')			#flow control
+sleep .1
+screen -S HL -X stuff 'AT+KPATTERN="--EOF--Pattern--"'$(echo -ne '\015')	#may be unecessary
+sleep .1
+
+#Delete Old Root/Local Certificates
+screen -S HL -X stuff 'AT+KCERTDELETE=0,0'$(echo -ne '\015')
+sleep .1
+screen -S HL -X stuff 'AT+KCERTDELETE=1,0'$(echo -ne '\015')
+sleep .1
+screen -S HL -X stuff 'AT+KCERTDELETE=1,1'$(echo -ne '\015')
+sleep .1
+screen -S HL -X stuff 'AT+KCERTDELETE=1,2'$(echo -ne '\015')
+sleep .1
+
+#Delete Old Private Keys
+screen -S HL -X stuff 'AT+KPRIVKDELETE=0'$(echo -ne '\015')
+sleep .1
+screen -S HL -X stuff 'AT+KPRIVKDELETE=1'$(echo -ne '\015')
+sleep .1
+screen -S HL -X stuff 'AT+KPRIVKDELETE=2'$(echo -ne '\015')
+sleep .1
+
+
+
+
+

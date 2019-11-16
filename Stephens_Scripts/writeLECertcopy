@@ -1,0 +1,14 @@
+#!/bin/bash
+
+screen -S HL -X stuff 'AT+KSSLCFG=0,0'$(echo -ne '\015')
+sleep .1
+screen -S HL -X stuff 'AT+KCERTSTORE=0,1220,0'$(echo -ne '\015')
+sleep 2
+screen -S HL -X stuff 'C:\Users\StiiviiWonder\Downloads\trustid-x3-root.crt'$(echo -ne '\015')
+sleep 10
+screen -S HL -X stuff 'AT+KCERTSTORE?'$(echo -ne '\015')
+
+
+# Sanity Check
+# screen -S HL -X stuff 'AT'$(echo -ne '\015')
+

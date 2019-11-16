@@ -1,0 +1,58 @@
+#!/bin/bash
+
+#screen -S HL -X stuff 'AT+KSSLCFG=0,0'$(echo -ne '\015')
+#sleep .1
+screen -S HL -X stuff 'AT+KCERTSTORE=0'$(echo -ne '\015')
+sleep 2
+screen -S HL -X stuff '-----BEGIN CERTIFICATE-----<LF>'$(echo -ne '\015')
+sleep .1
+screen -S HL -X stuff 'MIIDjTCCAnWgAwIBAgIUUIzKk2ddw9FmvpDLFiKfCy4YJR8wDQYJKoZIhvcNAQEL<LF>'$(echo -ne '\015')
+sleep .1
+screen -S HL -X stuff 'BQAwVjELMAkGA1UEBhMCQVUxEzARBgNVBAgMClNvbWUtU3RhdGUxITAfBgNVBAoM<LF>'$(echo -ne '\015')
+sleep .1
+screen -S HL -X stuff 'GEludGVybmV0IFdpZGdpdHMgUHR5IEx0ZDEPMA0GA1UEAwwGQ0FfUlNBMB4XDTE5<LF>'$(echo -ne '\015')
+sleep .1
+screen -S HL -X stuff 'PMDYxMDAzMjgyM1oXDTI5MDYwNzAzMjgyM1owVjELMAkGA1UEBhMCQVUxEzARBgNV<LF>'$(echo -ne '\015')
+sleep .1
+screen -S HL -X stuff 'BAgMClNvbWUtU3RhdGUxITAfBgNVBAoMGEludGVybmV0IFdpZGdpdHMgUHR5IEx0<LF>'$(echo -ne '\015')
+sleep .1
+screen -S HL -X stuff 'ZDEPMA0GA1UEAwwGQ0FfUlNBMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKC<LF>'$(echo -ne '\015')
+sleep .1
+screen -S HL -X stuff 'AQEAs/ors23CYllyZI/XgB8+f8vYjl0b84K3SFTkE7aWuZ3oILTbe83HVFvqNMdj<LF>'$(echo -ne '\015')
+sleep .1
+screen -S HL -X stuff 'vDPjyNV+uUqcaxfePgFHyjJ1FOFsnlJhtTLMV4gZrA3bSLw0l4kSnWKKO8eFumOw<LF>'$(echo -ne '\015')
+sleep .1
+screen -S HL -X stuff '5aha9YZ3qnP2juckd/ndeY4dlnl025bk3XBrXMNNpQiExuyyX1lkUgjtL42pumUG<LF>'$(echo -ne '\015')
+sleep .1
+screen -S HL -X stuff 'TqnD1b1Wl7MPlwUy91n2A42wZCpAmPA4NODRbt5p2cjaVzEXuhkdGTlaNuNFmuGd<LF>'$(echo -ne '\015')
+sleep .1
+screen -S HL -X stuff 'jLnk+2cm0Uu/NB33QSEtYyaUJUI3yL/jX4ElgjB3EwZj4w62meqWOR2mJvbyyIsU<LF>'$(echo -ne '\015')
+sleep .1
+screen -S HL -X stuff 'n/MBME8c+hMOVnSI5yvmAIEoTQIDAQABo1MwUTAdBgNVHQ4EFgQUx38GeePGw+1r<LF>'$(echo -ne '\015')
+sleep .1
+screen -S HL -X stuff '19vlVB/E3gPLvuwwHwYDVR0jBBgwFoAUx38GeePGw+1r19vlVB/E3gPLvuwwDwYD<LF>'$(echo -ne '\015')
+sleep .1
+screen -S HL -X stuff 'VR0TAQH/BAUwAwEB/zANBgkqhkiG9w0BAQsFAAOCAQEAb7d2YwTonCpHgKi2EIzA<LF>'$(echo -ne '\015')
+sleep .1
+screen -S HL -X stuff 'vMsTn5KTxxH/KB8tplPiI8PjXGsXMlHgwLL/pXOMeAVveQ+4rQ8vW0LXzs7gsacs<LF>'$(echo -ne '\015')
+sleep .1
+screen -S HL -X stuff 'XoLdl90/Vc34y0ng302A+zLRnPhCeRmMiQT5alyMMJCJF79H8NpI+/ccNQwvWSRQ<LF>'$(echo -ne '\015')
+sleep .1
+screen -S HL -X stuff 'x7uabkvS3GvytjwR7rxjWRoiT54KDeNzNHv7OO2jDX/Jovt07fHIg8MR+Xi6uY0V<LF>'$(echo -ne '\015')
+sleep .1
+screen -S HL -X stuff 'uTE8bZBqb7slVuF6TYX4My9jnpKx1izWCSgyEee2vcghuymUaCzsb+JL5ixGBxt/<LF>'$(echo -ne '\015')
+sleep .1
+screen -S HL -X stuff 'wpec2tMs62/7dEb7A5/La+mKoWrmSqhCM74PmwvKhfXglR1/bU0Z2VMsS7x9GKXm<LF>'$(echo -ne '\015')
+sleep .1
+screen -S HL -X stuff 'KA==<LF>'$(echo -ne '\015')
+sleep .1
+screen -S HL -X stuff '-----END CERTIFICATE-----<LF>'$(echo -ne '\015')
+sleep 2
+screen -S HL -X stuff '+++'$(echo -ne '\015')
+sleep .1
+screen -S HL -X stuff 'AT+KCERTSTORE?'$(echo -ne '\015')
+sleep .1
+
+# Sanity Check
+# screen -S HL -X stuff 'AT'$(echo -ne '\015')
+

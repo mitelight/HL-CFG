@@ -1,0 +1,52 @@
+#!/bin/bash
+
+screen -S HL -X stuff 'AT+KSSLCFG=0,0'$(echo -ne '\015')
+sleep .1
+screen -S HL -X stuff 'AT+KCERTSTORE=0,1200,0'$(echo -ne '\015')
+sleep 2
+screen -S HL -X stuff '-----BEGIN CERTIFICATE-----'$(echo -ne '\015')
+sleep .1
+screen -S HL -X stuff 'MIIDSjCCAjKgAwIBAgIQRK+wgNajJ7qJMDmGLvhAazANBgkqhkiG9w0BAQUFADA/'$(echo -ne '\015')
+sleep .1
+screen -S HL -X stuff 'MSQwIgYDVQQKExtEaWdpdGFsIFNpZ25hdHVyZSBUcnVzdCBDby4xFzAVBgNVBAMT'$(echo -ne '\015')
+sleep .1
+screen -S HL -X stuff 'DkRTVCBSb290IENBIFgzMB4XDTAwMDkzMDIxMTIxOVoXDTIxMDkzMDE0MDExNVow'$(echo -ne '\015')
+sleep .1
+screen -S HL -X stuff 'PzEkMCIGA1UEChMbRGlnaXRhbCBTaWduYXR1cmUgVHJ1c3QgQ28uMRcwFQYDVQQD'$(echo -ne '\015')
+sleep .1
+screen -S HL -X stuff 'Ew5EU1QgUm9vdCBDQSBYMzCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEB'$(echo -ne '\015')
+sleep .1
+screen -S HL -X stuff 'AN+v6ZdQCINXtMxiZfaQguzH0yxrMMpb7NnDfcdAwRgUi+DoM3ZJKuM/IUmTrE4O'$(echo -ne '\015')
+sleep .1
+screen -S HL -X stuff 'rz5Iy2Xu/NMhD2XSKtkyj4zl93ewEnu1lcCJo6m67XMuegwGMoOifooUMM0RoOEq'$(echo -ne '\015')
+sleep .1
+screen -S HL -X stuff 'OLl5CjH9UL2AZd+3UWODyOKIYepLYYHsUmu5ouJLGiifSKOeDNoJjj4XLh7dIN9b'$(echo -ne '\015')
+sleep .1
+screen -S HL -X stuff 'xiqKqy69cK3FCxolkHRyxXtqqzTWMIn/5WgTe1QLyNau7Fqckh49ZLOMxt+/yUFw'$(echo -ne '\015')
+sleep .1
+screen -S HL -X stuff '7BZy1SbsOFU5Q9D8/RhcQPGX69Wam40dutolucbY38EVAjqr2m7xPi71XAicPNaD'$(echo -ne '\015')
+sleep .1
+screen -S HL -X stuff 'aeQQmxkqtilX4+U9m5/wAl0CAwEAAaNCMEAwDwYDVR0TAQH/BAUwAwEB/zAOBgNV'$(echo -ne '\015')
+sleep .1
+screen -S HL -X stuff 'HQ8BAf8EBAMCAQYwHQYDVR0OBBYEFMSnsaR7LHH62+FLkHX/xBVghYkQMA0GCSqG'$(echo -ne '\015')
+sleep .1
+screen -S HL -X stuff 'SIb3DQEBBQUAA4IBAQCjGiybFwBcqR7uKGY3Or+Dxz9LwwmglSBd49lZRNI+DT69'$(echo -ne '\015')
+sleep .1
+screen -S HL -X stuff 'ikugdB/OEIKcdBodfpga3csTS7MgROSR6cz8faXbauX+5v3gTt23ADq1cEmv8uXr'$(echo -ne '\015')
+sleep .1
+screen -S HL -X stuff 'AvHRAosZy5Q6XkjEGB5YGV8eAlrwDPGxrancWYaLbumR9YbK+rlmM6pZW87ipxZz'$(echo -ne '\015')
+sleep .1
+screen -S HL -X stuff 'R8srzJmwN0jP41ZL9c8PDHIyh8bwRLtTcm1D9SZImlJnt1ir/md2cXjbDaJWFBM5'$(echo -ne '\015')
+sleep .1
+screen -S HL -X stuff 'JDGFoqgCWjBH4d1QB7wCCZAA62RjYJsWvIjJEubSfZGL+T0yjWW06XyxV3bqxbYo'$(echo -ne '\015')
+sleep .1
+screen -S HL -X stuff 'Ob8VZRzI9neWagqNdwvYkQsEjgfbKbYK7p2CNTUQ'$(echo -ne '\015')
+sleep .1
+screen -S HL -X stuff '-----END CERTIFICATE-----'$(echo -ne '\015')
+sleep 2
+screen -S HL -X stuff 'AT+KCERTSTORE?'$(echo -ne '\015')
+
+
+# Sanity Check
+# screen -S HL -X stuff 'AT'$(echo -ne '\015')
+

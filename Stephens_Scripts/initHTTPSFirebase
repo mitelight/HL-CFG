@@ -1,0 +1,44 @@
+#!/bin/bash
+
+#screen -S HL -X stuff 'AT+CFUN=1,1'$(echo -ne '\015')
+#sleep 10
+
+screen -S HL -X stuff 'ATI3'$(echo -ne '\015')
+sleep .1
+
+screen -S HL -X stuff 'AT+KCERTSTORE?'$(echo -ne '\015')
+sleep 2
+
+screen -S HL -X stuff 'AT+CCLK="19/11/15,22:15:32-24"'$(echo -ne '\015')
+sleep .1
+
+screen -S HL -X stuff 'AT&K3'$(echo -ne '\015')
+sleep .1
+
+#screen -S HL -X stuff 'AT+CGATT=0'$(echo -ne '\015')
+#sleep 5
+
+screen -S HL -X stuff 'AT+KCNXCFG=1,"GPRS","internet.sierrawireless.com"'$(echo -ne '\015')
+sleep .1
+
+#screen -S HL -X stuff 'AT+KCNXUP=1'$(echo -ne '\015')
+#sleep 10
+
+#screen -S HL -X stuff 'AT+KSSLCRYPTO=5,1,1,8192,4,4,0'$(echo -ne '\015')
+#sleep 2
+
+#screen -S HL -X stuff 'AT+KSSLCFG=0,3'$(echo -ne '\015')
+#sleep 2
+
+screen -S HL -X stuff 'AT+KHTTPCFG=1,"www.howsmyssl.com",443,2'$(echo -ne '\015')
+sleep 10
+
+#screen -S HL -X stuff 'AT+KHTTPCFG=1,"www.howsmyssl.com",443,2,,,,,5'$(echo -ne '\015')
+#sleep 10
+
+screen -S HL -X stuff 'AT+KHTTPGET=1,"/"'$(echo -ne '\015')
+sleep .1
+
+#screen -S HL -X stuff 'AT+KHTTPDEL=1'$(echo -ne '\015')
+#sleep .1
+

@@ -1,0 +1,5 @@
+#!/bin/bash
+
+# Connect HL7800 to Screen under alias HL
+cd /dev
+screen -S HL cu.usbserial 115200
