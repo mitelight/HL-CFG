@@ -1,0 +1,11 @@
+#!/bin/bash
+
+screen -S HL -X stuff 'AT+KSSLCFG=0,0'$(echo -ne '\015')
+sleep .1
+screen -S HL -X stuff 'AT+KCERTSTORE=0,1200,0'$(echo -ne '\015')
+sleep 2
+
+./PrintFileToScreen -f ./Certificates/trustid-x3-root.txt
+sleep 1
+
+screen -S HL -X stuff 'AT+KCERTSTORE?'$(echo -ne '\015')
