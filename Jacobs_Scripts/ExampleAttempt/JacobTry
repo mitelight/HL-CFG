@@ -2,4 +2,5 @@
 
 ./lib/exe/AT_Clear
 ./lib/exe/initStartUp
-./lib/exe/initHowsmyssl_Test
+#./lib/exe/initHowsmyssl_Test
+./lib/exe/initPROTOCOM_Test

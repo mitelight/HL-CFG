@@ -10,7 +10,8 @@ sleep .1
 screen -S HL -X stuff 'AT+KCERTSTORE=0'$(echo -ne '\015')
 sleep 2
 
-./lib/exe/PrintFileLocal -f ./lib/Certificates/trustid-x3-root.txt
+#./lib/exe/PrintFileLocal -f ./lib/Certificates/trustid-x3-root.txt
+./lib/exe/PrintFileLocal -f ./lib/Certificates/lets_encrypt_root_x1.txt
 
 screen -S HL -X stuff '--EOF--Pattern--'$(echo -ne '\015')
 sleep 2
@@ -26,6 +27,7 @@ sleep .1
 
 #Setup Module GPRS
 screen -S HL -X stuff 'AT+KCNXCFG=1,"GPRS","internet.sierrawireless.com"'$(echo -ne '\015')
+#screen -S HL -X stuff 'AT+KCNXCFG=1,"GPRS","lp.swir"'$(echo -ne '\015')
 sleep .1
 
 #Setup SSL Configuration
@@ -36,7 +38,8 @@ screen -S HL -X stuff 'AT+KCNXUP=1'$(echo -ne '\015')
 sleep 10
 
 #Setup HTTPS Configuration
-screen -S HL -X stuff 'AT+KHTTPCFG=1,"www.howsmyssl.com",443,2,,,,,0'$(echo -ne '\015')
+#screen -S HL -X stuff 'AT+KHTTPCFG=1,"www.howsmyssl.com",443,2,,,,,0'$(echo -ne '\015')
+screen -S HL -X stuff 'AT+KHTTPCFG=1,"www.mitelight-app.firebaseio.com",443,2,,,,,0'$(echo -ne '\015')
 sleep 10
 
 #Run HTTP Get Data from HTTPS Server
