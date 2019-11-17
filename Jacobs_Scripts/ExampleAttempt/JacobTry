@@ -1,5 +1,5 @@
 #!/bin/bash
 
-./AT_Clear
-./initStartUp
-./initPROTOCOM_Test
+./lib/exe/AT_Clear
+./lib/exe/initStartUp
+./lib/exe/initHowsmyssl_Test

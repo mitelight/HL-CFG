@@ -1,0 +1,47 @@
+#!/bin/bash
+
+#Initalize TLS 1.2
+screen -S HL -X stuff 'AT+KSSLCFG=0,3'$(echo -ne '\015')		#set to TLS1.2
+sleep .1
+screen -S HL -X stuff 'AT+KSSLCFG?'$(echo -ne '\015')			#0,3 and 2,0 means ready 
+sleep .1
+
+#Store CA Certificate to Root
+screen -S HL -X stuff 'AT+KCERTSTORE=0'$(echo -ne '\015')
+sleep 2
+
+./lib/exe/PrintFileLocal -f ./lib/Certificates/trustid-x3-root.txt
+
+screen -S HL -X stuff '--EOF--Pattern--'$(echo -ne '\015')
+sleep 2
+
+#Validate Certificate Store
+
+screen -S HL -X stuff 'AT+KCERTSTORE?'$(echo -ne '\015')
+sleep .1
+
+#Setup Module Clock
+screen -S HL -X stuff 'AT+CCLK="19/11/16,14:52:43-24"'$(echo -ne '\015')
+sleep .1
+
+#Setup Module GPRS
+screen -S HL -X stuff 'AT+KCNXCFG=1,"GPRS","internet.sierrawireless.com"'$(echo -ne '\015')
+sleep .1
+
+#Setup SSL Configuration
+screen -S HL -X stuff 'AT+KSSLCRYPTO=0,9,3,25456,12,4,0'$(echo -ne '\015')
+sleep 1
+
+screen -S HL -X stuff 'AT+KCNXUP=1'$(echo -ne '\015')
+sleep 10
+
+#Setup HTTPS Configuration
+screen -S HL -X stuff 'AT+KHTTPCFG=1,"www.howsmyssl.com",443,2,,,,,0'$(echo -ne '\015')
+sleep 10
+
+#Run HTTP Get Data from HTTPS Server
+screen -S HL -X stuff 'AT+KHTTPGET=1,"/"'$(echo -ne '\015')
+sleep 1
+
+screen -S HL -X stuff 'AT+KHTTPDEL=1'$(echo -ne '\015')
+sleep .1

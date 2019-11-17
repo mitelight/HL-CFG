@@ -52,7 +52,10 @@ sleep .1
 screen -S HL -X stuff 'AT+KPRIVKDELETE=2'$(echo -ne '\015')
 sleep .1
 
-
-
-
-
+#Delete HTTP Configurations
+screen -S HL -X stuff 'AT+KHTTPDEL=1'$(echo -ne '\015')
+sleep .1
+screen -S HL -X stuff 'AT+KHTTPDEL=2'$(echo -ne '\015')
+sleep .1
+screen -S HL -X stuff 'AT+KHTTPDEL=3'$(echo -ne '\015')
+sleep .1
