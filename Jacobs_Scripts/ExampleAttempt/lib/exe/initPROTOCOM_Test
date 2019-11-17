@@ -33,7 +33,7 @@ sleep .1
 screen -S HL -X stuff 'AT+KPRIVKSTORE=0'$(echo -ne '\015')
 sleep .1
 
-./lib/exe/PrintFileLocal -f lib/Certificates/Vietnamese\ Keys/domain.txt
+./lib/exe/PrintFileLocal -f lib/Certificates/FireBaseKeys/domain.txt
 
 screen -S HL -X stuff '--EOF--Pattern--'$(echo -ne '\015')
 sleep 2
@@ -51,12 +51,18 @@ sleep .1
 screen -S HL -X stuff 'AT+KCNXPROFILE=1'$(echo -ne '\015')
 sleep 3
 
+#Check that module has IP address
+screen -S HL -X stuff 'AT+CGPADDR=1'$(echo -ne '\015')
+
 #Setup SSL Configuration
 screen -S HL -X stuff 'AT+KSSLCRYPTO=0,9,3,25456,12,4,0'$(echo -ne '\015')
 sleep 1
 
 #Setup HTTP Configuration
-screen -S HL -X stuff 'AT+KHTTPCFG=1,"www.mitelight-app.firebaseio.com",443,2,,,,,0'$(echo -ne '\015')
+	# Trust DNS Server
+#screen -S HL -X stuff 'AT+KHTTPCFG=1,"www.mitelight-app.firebaseio.com",443,2,,,,,0'$(echo -ne '\015')
+	# Provide IP Address
+screen -S HL -X stuff 'AT+KHTTPCFG=1,"35.201.97.85",443,2,,,,,0'$(echo -ne '\015')
 sleep 5
 
 
