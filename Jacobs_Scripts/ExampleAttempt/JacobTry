@@ -1,0 +1,5 @@
+#!/bin/bash
+
+./AT_Clear
+./initStartUp
+./initPROTOCOM_Test

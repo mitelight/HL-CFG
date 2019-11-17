@@ -4,7 +4,7 @@
 
 ShowHelp()
 {
-	echo "This is the help" 
+	echo "example Usage: PrintFileToScreen -f ~/Downloads/foo.txt <-s HL>" 
 	return 1
 }
 
