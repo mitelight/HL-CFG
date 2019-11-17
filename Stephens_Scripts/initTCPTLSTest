@@ -33,6 +33,8 @@ sleep 1
 screen -S HL -X stuff 'AT+KTCPCFG=1,3,"mitelight-app.firebaseio.com",443'$(echo -ne '\015')
 sleep 1
 
+AT+KTCPCFG=1,3,"howsmyssl.com",443,,,,,0
+
 #,,,,,0
 
 screen -S HL -X stuff 'AT+KTCPCNX=1'$(echo -ne '\015')

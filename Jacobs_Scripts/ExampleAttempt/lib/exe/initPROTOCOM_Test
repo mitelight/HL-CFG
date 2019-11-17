@@ -30,10 +30,10 @@ screen -S HL -X stuff 'AT+KCERTSTORE?'$(echo -ne '\015')
 sleep .1
 
 #Store Client Private Key
-#screen -S HL -X stuff 'AT+KPRIVKSTORE=0'$(echo -ne '\015')
-#sleep .1
+screen -S HL -X stuff 'AT+KPRIVKSTORE=0'$(echo -ne '\015')
+sleep .1
 
-#./lib/exe/PrintFileLocal -f lib/Certificates/Vietnamese\ Keys/WIPSoft_Client_Key.txt
+./lib/exe/PrintFileLocal -f lib/Certificates/Vietnamese\ Keys/domain.txt
 
 screen -S HL -X stuff '--EOF--Pattern--'$(echo -ne '\015')
 sleep 2
@@ -57,7 +57,8 @@ sleep 1
 
 #Setup HTTP Configuration
 screen -S HL -X stuff 'AT+KHTTPCFG=1,"www.mitelight-app.firebaseio.com",443,2,,,,,0'$(echo -ne '\015')
-sleep 10
+sleep 5
+
 
 #Setup HTTP header Sample Field
 screen -S HL -X stuff 'AT+KHTTPHEADER=1'$(echo -ne '\015')
@@ -71,13 +72,13 @@ sleep .1
 screen -S HL -X stuff 'AT+KHTTPPOST=1,,"\post\"'$(echo -ne '\015')
 sleep 1
 screen -S HL -X stuff 'This line is the HTTP POST data test vector.'$(echo -ne '\015')
-sleep 10
+sleep 5
 screen -S HL -X stuff 'AT'$(echo -ne '\015')
 sleep .1
 
 #Run HTTP Header Check
 screen -S HL -X stuff 'AT+KHTTPHEAD=1,"\"'$(echo -ne '\015')
-sleep 10
+sleep 5
 screen -S HL -X stuff 'AT'$(echo -ne '\015')
 sleep .1
 
