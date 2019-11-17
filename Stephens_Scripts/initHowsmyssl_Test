@@ -2,6 +2,9 @@
 
 screen -S HL -X stuff 'AT+CEREG=0'$(echo -ne '\015')
 sleep .1
+screen -S HL -X stuff 'AT+CGATT=0'$(echo -ne '\015')
+sleep 5
+
 #Check Module Settings
 screen -S HL -X stuff 'AT'$(echo -ne '\015')
 sleep .1
@@ -109,27 +112,43 @@ screen -S HL -X stuff 'AT+KCERTSTORE?'$(echo -ne '\015')
 sleep .1
 
 #Setup Module Clock
-screen -S HL -X stuff 'AT+CCLK="19/11/16,14:52:43-24"'$(echo -ne '\015')
+screen -S HL -X stuff 'AT+CCLK="19/11/17,12:52:43-24"'$(echo -ne '\015')
+sleep .1
+
+screen -S HL -X stuff 'AT+CGPADDR=1'$(echo -ne '\015')
 sleep .1
 
 #Setup Module GPRS
-screen -S HL -X stuff 'AT+KCNXCFG=1,"GPRS","internet.sierrawireless.com"'$(echo -ne '\015')
+
+screen -S HL -X stuff 'AT+CGDCONT=1,"IPV4V6","","100.71.145.233"'$(echo -ne '\015')
+#screen -S HL -X stuff 'AT+CGDCONT=1,"IP","internet.sierrawireless.com"'$(echo -ne '\015')
+sleep 3
+
+#screen -S HL -X stuff 'AT+KCNXCFG=1,"GPRS","",,,"IPV4V6"'$(echo -ne '\015')
+#screen -S HL -X stuff 'AT+KCNXCFG=1,"GPRS","","","","IPV4","0.0.0.0","0.0.0.0","0.0.0.0",0'$(echo -ne '\015')
+screen -S HL -X stuff 'AT+KCNXCFG=1,"GPRS","internet.sierrawireless.com",,,"IPV4"'$(echo -ne '\015')
+sleep 3
+
+#Setup SSL Configuration
+#screen -S HL -X stuff 'AT+KSSLCRYPTO=0,9,3,25456,12,4,0'$(echo -ne '\015')
+#sleep 1
+screen -S HL -X stuff 'AT+CGATT=1'$(echo -ne '\015')
+sleep 5
+screen -S HL -X stuff 'AT+KCNXUP=1'$(echo -ne '\015')
+sleep 5
+screen -S HL -X stuff 'AT+CGPADDR=1'$(echo -ne '\015')
 sleep .1
 
-Setup SSL Configuration
-screen -S HL -X stuff 'AT+KSSLCRYPTO=0,9,3,25456,12,4,0'$(echo -ne '\015')
-sleep 1
-
-screen -S HL -X stuff 'AT+KCNXUP=1'$(echo -ne '\015')
-sleep 10
-
 #Setup HTTPS Configuration
-screen -S HL -X stuff 'AT+KHTTPCFG=1,"www.howsmyssl.com",443,2,,,,,0'$(echo -ne '\015')
-sleep 10
+screen -S HL -X stuff 'AT+KHTTPCFG=1,"35.227.42.200",443,2,,,,,0'$(echo -ne '\015')
+sleep 5
+
+screen -S HL -X stuff 'AT+KHTTPCNX=1'$(echo -ne '\015')
+sleep 5
 
 #Run HTTP Get Data from HTTPS Server
 screen -S HL -X stuff 'AT+KHTTPGET=1,"/"'$(echo -ne '\015')
 sleep 1
 
-#screen -S HL -X stuff 'AT+KHTTPDEL=1'$(echo -ne '\015')
-#sleep .1
+screen -S HL -X stuff 'AT+KHTTPDEL=1'$(echo -ne '\015')
+sleep .1

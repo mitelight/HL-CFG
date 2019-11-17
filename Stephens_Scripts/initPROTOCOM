@@ -9,6 +9,9 @@ sleep .1
 #Store CA Certificate to Root
 screen -S HL -X stuff 'AT+KCERTSTORE=0'$(echo -ne '\015')
 sleep .1
+
+./../Jacobs_Scripts/PrintFileToScreen -f ../Jacobs_Scripts/Certificates/trustid-x3-root.txt
+
 screen -S HL -X stuff '-----BEGIN CERTIFICATE-----'$(echo -ne '\015')
 sleep .1
 screen -S HL -X stuff 'MIIDjTCCAnWgAwIBAgIUUIzKk2ddw9FmvpDLFiKfCy4YJR8wDQYJKoZIhvcNAQEL'$(echo -ne '\015')
