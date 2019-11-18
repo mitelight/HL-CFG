@@ -25,9 +25,13 @@ sleep .1
 screen -S HL -X stuff 'AT+CCLK="19/11/16,14:52:43-24"'$(echo -ne '\015')
 sleep .1
 
-#Setup Module GPRS
-screen -S HL -X stuff 'AT+KCNXCFG=1,"GPRS","internet.sierrawireless.com"'$(echo -ne '\015')
-#screen -S HL -X stuff 'AT+KCNXCFG=1,"GPRS","lp.swir"'$(echo -ne '\015')
+#Setup Module 
+
+screen -S HL -X stuff 'AT+CGDCONT=1,"IP","internet.sierrawireless.com",,0,0,0,2,1,0,0,0,1,1,1,1'$(echo -ne '\015')
+sleep 1
+
+#screen -S HL -X stuff 'AT+KCNXCFG=1,"GPRS","internet.sierrawireless.com"'$(echo -ne '\015')
+screen -S HL -X stuff 'AT+KCNXCFG=1,"GPRS","internet.sierrawireless.com",,,"IPV4","","8.8.8.8","","","",""'$(echo -ne '\015')
 sleep .1
 
 #Setup SSL Configuration
@@ -36,6 +40,10 @@ sleep 1
 
 screen -S HL -X stuff 'AT+KCNXUP=1'$(echo -ne '\015')
 sleep 5
+
+#Check that module has IP address
+screen -S HL -X stuff 'AT+CGPADDR=1'$(echo -ne '\015')
+sleep .1
 
 #Setup HTTPS Configuration
 screen -S HL -X stuff 'AT+KHTTPCFG=1,"www.howsmyssl.com",443,0,,,,,0'$(echo -ne '\015')
