@@ -5,3 +5,8 @@ https://stackoverflow.com/questions/15144046/converting-pkcs12-certificate-into-
 
 https://stackoverflow.com/questions/10271197/how-to-extract-public-key-using-openssl
 	openssl rsa -in privkey.pem -pubout > key.pub
+
+Useful link for grabbing Certificates:
+
+https://www.avisi.nl/blog/2012/09/12/quick-way-to-retrieve-a-chain-of-ssl-certificates-from-a-server
+	openssl s_client -host google.com -port 443 -prexit -showcerts
