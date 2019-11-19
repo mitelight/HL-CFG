@@ -1,0 +1,7 @@
+Useful links for converting certificates
+
+https://stackoverflow.com/questions/15144046/converting-pkcs12-certificate-into-pem-using-openssl
+	openssl pkcs12 -in path.p12 -out newfile.pemz
+
+https://stackoverflow.com/questions/10271197/how-to-extract-public-key-using-openssl
+	openssl rsa -in privkey.pem -pubout > key.pub
