@@ -1,0 +1,60 @@
+#!/bin/bash
+
+#Iterates through line of file and prints to active screen session
+#NOT ORIGINAL!! COPIED FROM HIGHER DIR
+
+ShowHelp()
+{
+	echo "example Usage: PrintFileToScreen -f ~/Downloads/foo.txt <-s HL>" 
+	return 1
+}
+
+PrintLoop ()
+{
+	IFS=$'\n'
+	set -f
+	for i in $(cat < "$file"); do
+		screen -S $session -X stuff $i$(echo -ne '\015')$(echo -ne '\012')
+#		echo "Test: $i"
+		sleep .1
+	done
+	
+}
+
+# Declare Variables
+file=""
+session=""
+
+# Gather Args
+while getopts 'hf:s:' flag; do
+	case "${flag}" in
+	h)
+		ShowHelp
+		exit 0
+		;;
+	f) file=${OPTARG}
+		;;
+	s) session=${OPTARG}
+		;;
+	*)
+		ShowHelp >&2
+		exit 1
+		;; 
+	esac
+done
+shift "$((OPTIND-1))"
+
+if [ -z file ]; then
+	ShowHelp
+	exit 0
+fi
+
+# Default Session name is HL
+if [$session == ""]; then
+	session="HL"
+fi
+
+printf $file
+printf $session
+printf "\n"
+PrintLoop

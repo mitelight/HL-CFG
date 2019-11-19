@@ -1,0 +1,11 @@
+#!/bin/bash
+
+#Delete Old Root/Local Certificates
+atscreen -S HL -X stuff 'AT+KCERTDELETE=0,0'$(echo -ne '\015')
+sleep .2
+screen -S HL -X stuff 'AT+KCERTDELETE=1,0'$(echo -ne '\015')
+sleep .2
+screen -S HL -X stuff 'AT+KCERTDELETE=1,1'$(echo -ne '\015')
+sleep .2
+screen -S HL -X stuff 'AT+KCERTDELETE=1,2'$(echo -ne '\015')
+sleep .2

@@ -8,7 +8,7 @@ read response
 #minicom -L ~/Github/HL-CFG/Jacobs_Scripts/Minicom/logs/MostRecent.txt -o HL_STD -S ~/Github/HL-CFG/Jacobs_Scripts/Minicom/lib/exe/MinicomScripts/LoadCert.script
 echo "Now the rest is automated"
 echo "Paste this in a new window: "
-echo "cd ~/Github/HL-CFG/Jacobs_Scripts/Minicom/logs/"
+echo "cd ~/Github/HL-CFG/Jacobs_Scripts/FirebaseAttemptcd ./logs/"
 echo "./setupHLConnect"
 echo "Ready?"
 read response

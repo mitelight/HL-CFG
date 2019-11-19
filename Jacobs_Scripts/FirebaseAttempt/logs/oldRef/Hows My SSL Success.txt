@@ -1,0 +1,329 @@
+OK
+at
+OK
+AT+KSSLCFG=0,3
+OK
+AT+KSSLCFG?
++KSSLCFG: 0,3
++KSSLCFG: 2,0
+
+OK
+AT+KCERTSTORE?
+CONNECT
+root_cert,0,1220
+-----BEGIN CERTIFICATE-----
+MIIDSjCCAjKgAwIBAgIQRK+wgNajJ7qJMDmGLvhAazANBgkqhkiG9w0BAQUFADA/
+MSQwIgYDVQQKExtEaWdpdGFsIFNpZ25hdHVyZSBUcnVzdCBDby4xFzAVBgNVBAMT
+DkRTVCBSb290IENBIFgzMB4XDTAwMDkzMDIxMTIxOVoXDTIxMDkzMDE0MDExNVow
+PzEkMCIGA1UEChMbRGlnaXRhbCBTaWduYXR1cmUgVHJ1c3QgQ28uMRcwFQYDVQQD
+Ew5EU1QgUm9vdCBDQSBYMzCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEB
+AN+v6ZdQCINXtMxiZfaQguzH0yxrMMpb7NnDfcdAwRgUi+DoM3ZJKuM/IUmTrE4O
+rz5Iy2Xu/NMhD2XSKtkyj4zl93ewEnu1lcCJo6m67XMuegwGMoOifooUMM0RoOEq
+OLl5CjH9UL2AZd+3UWODyOKIYepLYYHsUmu5ouJLGiifSKOeDNoJjj4XLh7dIN9b
+xiqKqy69cK3FCxolkHRyxXtqqzTWMIn/5WgTe1QLyNau7Fqckh49ZLOMxt+/yUFw
+7BZy1SbsOFU5Q9D8/RhcQPGX69Wam40dutolucbY38EVAjqr2m7xPi71XAicPNaD
+aeQQmxkqtilX4+U9m5/wAl0CAwEAAaNCMEAwDwYDVR0TAQH/BAUwAwEB/zAOBgNV
+HQ8BAf8EBAMCAQYwHQYDVR0OBBYEFMSnsaR7LHH62+FLkHX/xBVghYkQMA0GCSqG
+SIb3DQEBBQUAA4IBAQCjGiybFwBcqR7uKGY3Or+Dxz9LwwmglSBd49lZRNI+DT69
+ikugdB/OEIKcdBodfpga3csTS7MgROSR6cz8faXbauX+5v3gTt23ADq1cEmv8uXr
+AvHRAosZy5Q6XkjEGB5YGV8eAlrwDPGxrancWYaLbumR9YbK+rlmM6pZW87ipxZz
+R8srzJmwN0jP41ZL9c8PDHIyh8bwRLtTcm1D9SZImlJnt1ir/md2cXjbDaJWFBM5
+JDGFoqgCWjBH4d1QB7wCCZAA62RjYJsWvIjJEubSfZGL+T0yjWW06XyxV3bqxbYo
+Ob8VZRzI9neWagqNdwvYkQsEjgfbKbYK7p2CNTUQ
+-----END CERTIFICATE-----
+
+local_cert,0,0
+local_cert,1,0
+local_cert,2,0
+
+OK
+AT+CFUN=0
+OK
+
++KCNX_IND: 1,0,0
+AT+CFUN=1
+OK
+AT+CCLK="19/11/16,14:52:43-24"
+OK
+AT+CGPADDR=1
++CGPADDR: 1,"100.87.141.12"
+
+OK
+AT+CGDCONT=1,"IP","internet.sierrawireless.com",,0,0,0,2,1,0,0,0,1,1,1,1
+OK
+AT+KCNXCFG=1,"GPRS","internet.sierrawireless.com",,,"IPV4"
+OK
+AT+KSSLCRYPTO=0,9,3,25456,12,4,0
+OK
+AT+KCNXUP=1
+OK
+
++KCNX_IND: 1,1,0
+AT+KHTTPCFG=1,"www.howsmyssl.com",443,2,,,,,0
++KHTTPCFG: 1
+AT+KHTTPGET=1,"/"AT+KHTTPDEL=1
+OK
+
++KHTTP_IND: 1,1
+
+CONNECT
+HTTP/1.1 200 OK
+content-length: 9271
+access-control-allow-origin: *
+connection: close
+content-type: text/html;charset=utf-8
+date: Tue, 19 Nov 2019 04:15:08 GMT
+strict-transport-security: max-age=631138519; includeSubdomains; preload
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>How's My SSL?</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <script>
+     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+         (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                              m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+     })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+     ga('create', 'UA-46659537-1', 'howsmyssl.com');
+     ga('send', 'pageview');
+
+    </script>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <script
+        src="https://code.jquery.com/jquery-2.2.4.min.js"
+        integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+        crossorigin="anonymous"></script>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+    <style type="text/css">
+     body {
+         padding-top: 60px;
+         padding-bottom: 40px;
+     }
+
+     .hero-unit-okay {
+         color: #1B9E77;
+     }
+
+     .hero-unit-improvable {
+         color: #7570B3;
+     }
+
+     .hero-unit-bad {
+         color: #D95F02;
+     }
+
+     @media screen and (max-width: 480px) {
+         .hero-unit h1 { font-size: 35px; }
+     }
+
+     .okay {
+         background-color: #1B9E77;
+         font-size: 1em;
+     }
+
+     .improvable {
+         background-color: #7570B3;
+         font-size: 1em;
+     }
+
+     .bad {
+         background-color: #D95F02;
+         font-size: 1em;
+     }
+
+     footer {
+         margin-bottom: 500px;
+     }
+
+     .container .credit {
+         margin: 20px 0;
+     }
+    </style>
+  </head>
+  <body>
+    <div class="navbar navbar-default navbar-fixed-top">
+      <div class="container-fluid">
+        <div class="navbar-header">
+
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/">How's My SSL?</a>
+        </div>
+
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="/">Home</a></li>
+            <li><a href="/s/about.html">About</a></li>
+            <li><a href="/s/api.html">API</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-offset-1 col-sm-9">
+          <div class="jumbotron">
+            <h1>Your SSL client is</h1>
+            <h1><span class="hero-unit-okay">Probably Okay</span>.</h1>
+            <p>Check out the sections below for information about the SSL/TLS
+              client you used to render this page.</p>
+            <p><small>Yeah, we <a href="/s/about.html#tls-vs-ssl">really mean "TLS"</a>, not "SSL".</small></p>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-4">
+              <h2>Version</h2>
+              
+              
+              <p><span class="label okay">Good</span> Your client is using
+                TLS 1.2, the most modern version of the encryption
+                protocol. It gives you access to the fastest, most secure
+                encryption possible on the web.</p>
+              
+              
+              <p><a href="/s/about.html/#version">Learn More</a></p>
+            </div>
+            <div class="col-sm-4">
+              <h2>Ephemeral Key Support</h2>
+              
+              <p><span class="label okay">Good</span> Ephemeral keys are
+                used in some of the cipher suites your client supports.
+                This means your client may be used to provide
+                <a href="https://en.wikipedia.org/wiki/Forward_secrecy">forward
+                  secrecy</a> if the server supports it. This greatly increases your protection
+                against snoopers, including global passive adversaries who
+                scoop up large amounts of encrypted traffic and store
+                them until their attacks (or their computers) improve.</p>
+              
+              <p><a href="/s/about.html/#ephemeral-key-support">Learn More</a></p>
+            </div>
+            <div class="col-sm-4">
+              <h2>Session Ticket Support</h2>
+              
+              <p><span class="label improvable">Improvable</span> Session tickets are
+                not supported in your client. Without them, services will have a harder 
+                time making your client's connections fast. Generally, clients with 
+                ephemeral key support get this for free.</p>
+              
+              <p><a href="/s/about.html/#session-ticket-support">Learn More</a></p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-4">
+              <h2>TLS Compression</h2>
+              
+              <p><span class="label okay">Good</span> Your TLS client does not attempt
+                to compress the settings that encrypt your connection, avoiding
+                information leaks from the
+                <a href="https://en.wikipedia.org/wiki/CRIME_%28security_exploit%29">CRIME
+                  attack</a>.</p>
+              
+              <p><a href="/s/about.html/#tls-compression">Learn More</a></p>
+            </div>
+            <div class="col-sm-4">
+              <h2>BEAST Vulnerability</h2>
+              
+              <p><span class="label okay">Good</span>
+                
+                
+                
+                Your client is not vulnerable to
+                the <a href="https://en.wikipedia.org/wiki/Transport_Layer_Security#BEAST_attack">BEAST
+                attack</a> because it's using a TLS protocol newer than
+                TLS 1.0. The BEAST attack is only possible against clients
+                using TLS 1.0 or earlier
+                using <a href="https://en.wikipedia.org/wiki/Cipher_block_chaining#Cipher-block_chaining_.28CBC.29">Cipher-Block
+                Chaining</a> cipher suites that do not implement the
+                1/n-1 record splitting mitigation.
+                
+                
+                
+                <p><a href="/s/about.html/#beast-vulnerability">Learn More</a></p>
+            </div>
+            <div class="col-sm-4">
+              <h2>Insecure Cipher Suites</h2>
+              
+              <p><span class="label okay">Good</span> Your client doesn't use any
+                cipher suites that are known to be insecure.</p>
+              
+              <p><a href="/s/about.html/#insecure-cipher-suites">Learn More</a></p>
+            </div>
+          </div>
+          <div class="row">
+            
+            <div class="col-sm-4">
+              <h2>Given Cipher Suites</h2>
+              <p>The cipher suites your client said it supports, in the order it
+                sent them, are:</p>
+              <ul>
+                
+                <li>TLS_RSA_WITH_AES_128_GCM_SHA256</li>
+                
+                <li>TLS_RSA_WITH_AES_256_GCM_SHA384</li>
+                
+                <li>TLS_RSA_WITH_AES_128_CCM</li>
+                
+                <li>TLS_RSA_WITH_AES_256_CCM</li>
+                
+                <li>TLS_RSA_WITH_AES_128_CCM_8</li>
+                
+                <li>TLS_RSA_WITH_AES_256_CCM_8</li>
+                
+                <li>TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256</li>
+                
+                <li>TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256</li>
+                
+                <li>TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256</li>
+                
+                <li>TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256</li>
+                
+                <li>TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384</li>
+                
+                <li>TLS_ECDHE_ECDSA_WITH_AES_128_CCM</li>
+                
+                <li>TLS_ECDHE_ECDSA_WITH_AES_256_CCM</li>
+                
+                <li>TLS_ECDHE_ECDSA_WITH_AES_128_CCM_8</li>
+                
+                <li>TLS_ECDHE_ECDSA_WITH_AES_256_CCM_8</li>
+                
+                <li>TLS_EMPTY_RENEGOTIATION_INFO_SCSV</li>
+                
+              </ul>
+              <p><a href="/s/about.html/#given-cipher-suites">Learn More</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="row">
+        <div class="col-sm-offset-1 col-sm-12">
+          <h4>Want use the How's My SSL API on your site?  <a href="https://subscriptions.howsmyssl.com">Purchase a subscription</a>!</h4>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-offset-1 col-sm-12">
+          Built by <a href="https://www.darkishgreen.com">Darkish Green</a>.
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+--EOF--Pattern--
+OK
+
++KHTTP_IND: 1,3,9511,200,"OK"
+
++KHTTP_IND: 1,0
