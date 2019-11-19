@@ -70,6 +70,7 @@ sleep 1
 screen -S HL -X stuff 'AT+KHTTPCFG=1,"www.mitelight-app.firebaseio.com",443,2,,,,,0'$(echo -ne '\015')
 	# Provide IP Address
 #screen -S HL -X stuff 'AT+KHTTPCFG=1,"35.201.97.85",443,2,,,,,0'$(echo -ne '\015')
+AT+KHTTPCFG=1,"www.mitelight-app.firebaseio.com",443,2,,,,,0
 sleep 5
 
 

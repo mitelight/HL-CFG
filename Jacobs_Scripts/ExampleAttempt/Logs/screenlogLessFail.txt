@@ -1,3 +1,9 @@
+*********** NOTES **************
+Old config (works) :
++KCNXCFG: 1,"GPRS","internet.sierrawireless.com","","","IPV4","0.0.0.0","0.0.0.0","0.0.0.0",2
+
+*********** /NOTES **************
+
 at
 OK
 
