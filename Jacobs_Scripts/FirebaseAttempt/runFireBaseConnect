@@ -5,14 +5,14 @@ echo "Use opt+y and specify path to file ~/Github/HL-CFG/Jacobs_Scripts/Firebase
 echo "Then once it's done uploading press opt+x to get out"
 echo "kapeesh? (say something and you'll be teleported in)"
 read response
-minicom -L ~/Github/HL-CFG/Jacobs_Scripts/Minicom/logs/MostRecent.txt -o HL_STD -S ~/Github/HL-CFG/Jacobs_Scripts/FirebaseAttempt/lib/exe/MinicomScripts/LoadRootCert.script
+#minicom -L ~/Github/HL-CFG/Jacobs_Scripts/Minicom/logs/MostRecent.txt -o HL_STD -S ~/Github/HL-CFG/Jacobs_Scripts/FirebaseAttempt/lib/exe/MinicomScripts/LoadRootCert.script
 
 echo "Load Intermediate Certificate Next"
 echo "Use opt+y and specify path to file ~/Github/HL-CFG/Jacobs_Scripts/FirebaseAttempt/lib/Certificates/FireBaseKeys/{GTS_CA_101}"
 echo "Then once it's done uploading press opt+x to get out"
 echo "kapeesh? (say something and you'll be teleported in)"
 read response
-minicom -L ~/Github/HL-CFG/Jacobs_Scripts/Minicom/logs/MostRecent.txt -o HL_STD -S ~/Github/HL-CFG/Jacobs_Scripts/FirebaseAttempt/lib/exe/MinicomScripts/LoadIntCert.script
+#minicom -L ~/Github/HL-CFG/Jacobs_Scripts/Minicom/logs/MostRecent.txt -o HL_STD -S ~/Github/HL-CFG/Jacobs_Scripts/FirebaseAttempt/lib/exe/MinicomScripts/LoadIntCert.script
 
 echo "Now the rest is automated"
 echo "Paste this in a new window: "
@@ -20,4 +20,4 @@ echo "cd ~/Github/HL-CFG/Jacobs_Scripts/FirebaseAttempt/logs/"
 echo "./setupHLConnect"
 echo "Ready?"
 read response
-./lib/exe/initStartUp&&./lib/exe/FirebaseConnect&& ./lib/exe/Cleanup
+./lib/exe/initStartUp&&./lib/exe/FirebaseConnect #&&./lib/exe/Cleanup
