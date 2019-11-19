@@ -1,0 +1,6 @@
+#!/bin/bash
+
+# Connect HL7800 to Screen under alias HL with Logging enabled
+# Log will be saved local to caller. Try to call from Logs Dir.
+rm screenlog.0
+screen -L -S HL /dev/cu.usbserial 115200

@@ -3,36 +3,22 @@
 #Initalize TLS 1.2
 screen -S HL -X stuff 'AT+KSSLCFG=0,3'$(echo -ne '\015')				#set to TLS1.2
 sleep .2
-#screen -S HL -X stuff 'AT+KSSLCFG=1,"mitelight-app"'$(echo -ne '\015') 	#Seed Generation of Priv key
-#sleep .2
-#screen -S HL -X stuff 'AT+KSSLCFG=2,0'$(echo -ne '\015') 				#Set Session Mode to supported option
-#sleep .2
 
 screen -S HL -X stuff 'AT+KSSLCFG?'$(echo -ne '\015')			#0,3 and 2,0 means ready 
-sleep .2
-
-#Turn on FC for Cert tx
-screen -S HL -X stuff 'AT&K3'$(echo -ne '\015')			#flow control (on)
-sleep .2
-
-#Store CA Certificate to Root
-#screen -S HL -X stuff 'AT+KCERTSTORE=0'$(echo -ne '\015')
-#sleep 2
-
-#./lib/exe/PrintFileLocal -f ./lib/Certificates/klyn/trustid-x3-root.txt
-#./lib/exe/PrintFileLocal -f ./lib/Certificates/klyn/lets_encrypt_root_x1.txt
-
-#screen -S HL -X stuff '--EOF--Pattern--'$(echo -ne '\015')
-#sleep 2
-
-#Turn off FC for the rest
-screen -S HL -X stuff 'AT&K0'$(echo -ne '\015')			#flow control (on)
 sleep .2
 
 #Validate Certificate Store
 
 screen -S HL -X stuff 'AT+KCERTSTORE?'$(echo -ne '\015')
 sleep .2
+
+#Soft Restart
+
+screen -S HL -X stuff 'AT+CFUN=0'$(echo -ne '\015')
+sleep 3
+
+screen -S HL -X stuff 'AT+CFUN=1'$(echo -ne '\015')
+sleep 3
 
 #Setup Module Clock
 screen -S HL -X stuff 'AT+CCLK="19/11/16,14:52:43-24"'$(echo -ne '\015')

@@ -27,6 +27,8 @@ sleep .2
 #Check Network Coverage
 screen -S HL -X stuff 'AT+CREG?'$(echo -ne '\015')		#1,5 means registered roaming
 sleep .2
+screen -S HL -X stuff 'AT+CEREG=2'$(echo -ne '\015')		#0,5 means registered roaming
+sleep .2
 screen -S HL -X stuff 'AT+CEREG?'$(echo -ne '\015')		#0,5 means registered roaming
 sleep .2
 screen -S HL -X stuff 'AT&K0'$(echo -ne '\015')			#flow control (off)
@@ -34,7 +36,7 @@ sleep .2
 screen -S HL -X stuff 'AT+KPATTERN="--EOF--Pattern--"'$(echo -ne '\015')	#may be unecessary
 sleep .2
 
-#Delete Old Root/Local Certificates
+#Delete Old Root/Local Certificates (DONE IN CLEANUP)
 #atscreen -S HL -X stuff 'AT+KCERTDELETE=0,0'$(echo -ne '\015')
 #sleep .2
 #screen -S HL -X stuff 'AT+KCERTDELETE=1,0'$(echo -ne '\015')
@@ -59,3 +61,5 @@ screen -S HL -X stuff 'AT+KHTTPDEL=2'$(echo -ne '\015')
 sleep .2
 screen -S HL -X stuff 'AT+KHTTPDEL=3'$(echo -ne '\015')
 sleep .2
+
+#

@@ -1,0 +1,4 @@
+send "AT"
+send "AT"
+send "AT"
+send "AT+KCERTSTORE=0"
