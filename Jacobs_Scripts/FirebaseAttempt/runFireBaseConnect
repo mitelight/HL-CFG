@@ -1,16 +1,16 @@
 #!/bin/bash
 
-echo "Load Certificate First"
-echo "Use opt+y and specify path to file ~/Github/HL-CFG/Jacobs_Scripts/Minicom/lib/Certificates/klyn/Testcert.crt"
+echo "Load Root Certificate First"
+echo "Use opt+y and specify path to file ~/Github/HL-CFG/Jacobs_Scripts/FirebaseAttempt/lib/Certificates/FireBaseKeys/{GlobalSign_Root}"
 echo "Then once it's done uploading press opt+x to get out"
 echo "kapeesh? (say something and you'll be teleported in)"
 read response
-#minicom -L ~/Github/HL-CFG/Jacobs_Scripts/Minicom/logs/MostRecent.txt -o HL_STD -S ~/Github/HL-CFG/Jacobs_Scripts/Minicom/lib/exe/MinicomScripts/LoadCert.script
+minicom -L ~/Github/HL-CFG/Jacobs_Scripts/Minicom/logs/MostRecent.txt -o HL_STD -S ~/Github/HL-CFG/Jacobs_Scripts/FirebaseAttempt/lib/exe/MinicomScripts/LoadRootCert.script
 echo "Now the rest is automated"
 echo "Paste this in a new window: "
 echo "cd ~/Github/HL-CFG/Jacobs_Scripts/FirebaseAttemptcd ./logs/"
 echo "./setupHLConnect"
 echo "Ready?"
 read response
-./lib/exe/initStartUp&&./lib/exe/initHowsmyssl_Test 
+./lib/exe/initStartUp&&./lib/exe/FirebaseConnect
 #&& ./lib/exe/Cleanup
