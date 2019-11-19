@@ -24,12 +24,14 @@ sleep 3
 screen -S HL -X stuff 'AT+CCLK="19/11/16,14:52:43-24"'$(echo -ne '\015')
 sleep .2
 
-#Setup Module 
+#Check that module has IP address
+screen -S HL -X stuff 'AT+CGPADDR=1'$(echo -ne '\015')
+sleep .2
 
+#Setup Module 
 screen -S HL -X stuff 'AT+CGDCONT=1,"IP","internet.sierrawireless.com",,0,0,0,2,1,0,0,0,1,1,1,1'$(echo -ne '\015')
 sleep 1
 
-#screen -S HL -X stuff 'AT+KCNXCFG=1,"GPRS","internet.sierrawireless.com"'$(echo -ne '\015')
 screen -S HL -X stuff 'AT+KCNXCFG=1,"GPRS","internet.sierrawireless.com",,,"IPV4"'$(echo -ne '\015')
 sleep .2
 
@@ -40,18 +42,14 @@ sleep 1
 screen -S HL -X stuff 'AT+KCNXUP=1'$(echo -ne '\015')
 sleep 5
 
-#Check that module has IP address
-screen -S HL -X stuff 'AT+CGPADDR=1'$(echo -ne '\015')
-sleep .2
-
 #Setup HTTPS Configuration
 
 		#DNS Resolution
-#screen -S HL -X stuff 'AT+KHTTPCFG=1,"www.howsmyssl.com",443,0,,,,,0'$(echo -ne '\015')
+screen -S HL -X stuff 'AT+KHTTPCFG=1,"www.howsmyssl.com",443,0,,,,,0'$(echo -ne '\015')
 		# Don't trust DNS
-screen -S HL -X stuff 'AT+KHTTPCFG=1,"35.227.42.200",443,2,,,,,0'$(echo -ne '\015')
+#screen -S HL -X stuff 'AT+KHTTPCFG=1,"35.227.42.200",443,2,,,,,0'$(echo -ne '\015')
 #screen -S HL -X stuff 'AT+KHTTPCFG=1,"www.mitelight-app.firebaseio.com",443,2,,,,,0'$(echo -ne '\015')
-sleep 5
+sleep 3
 
 #Run HTTP Get Data from HTTPS Server
 screen -S HL -X stuff 'AT+KHTTPGET=1,"/"'$(echo -ne '\015')
